@@ -16,6 +16,10 @@ import { RouterLink, RouterView } from "vue-router";
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/simple-review-list">Simple Review List</RouterLink>
+        <RouterLink
+          to="/review-list-by-establishment-id?establishmentId=8bd461e1-305f-42c0-bd9d-fa925a17db31"
+          >Review List by Establishment id</RouterLink
+        >
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>

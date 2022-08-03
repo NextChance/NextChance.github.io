@@ -30,8 +30,11 @@ export const useGlobalStore = defineStore("global", {
       this.clientAppToken = data.jwt;
     },
 
-    async getEstablishmentReviews() {
-      const establishmentId = "0558c2a4-dc7d-4a57-bc79-b59999d472e0"; // docamar
+    async getReviewsByEstablishmentId(
+      establishmentId = "0558c2a4-dc7d-4a57-bc79-b59999d472e0" // docamar
+    ) {
+      this.reviews = [];
+
       const queryParams = { limit: 30, offset: 0 };
       const endpoint = new URL(
         `${API_BASE_URL}/establishments/${establishmentId}/reviews`

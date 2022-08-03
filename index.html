@@ -27,10 +27,30 @@
 <body>
   <h1>NextChance nofakes integration poc</h1>
 
-  <p>Embed site from another domain:</p>
+  <h2>Embed site from another domain, showing review list</h2>
+  <main class="iframe-wrapper">
+    <iframe id="singleReviewList" src="https://nextchance-nofakes-integration-poc.netlify.app/" frameborder="1"></iframe>
+  </main>
+  
+  <hr>
+  
+  <h2>Showing review list from a single establishmentId via query param</h2>
 
   <main class="iframe-wrapper">
-    <iframe src="https://nextchance-nofakes-integration-poc.netlify.app/" frameborder="1"></iframe>
+    <input id="establishmentIdInput" type="text" placeholder="id de establecimiento">
+    <button id="showReviewsByEstablishmentIdButton">Mostrar reviews</button>
+    <iframe id="reviewListByEstablishmentId" src="" frameborder="1"></iframe>
   </main>
+
+  <script>
+    const showReviewsByEstablishmentIdButton = document.querySelector('#showReviewsByEstablishmentIdButton');
+    const establishmentIdInput = document.querySelector('#establishmentIdInput');
+    const reviewListByEstablishmentIdIframe = document.querySelector('#reviewListByEstablishmentId');
+
+    showReviewsByEstablishmentIdButton.addEventListener('click', () => {
+      const establishmentId = establishmentIdInput.value;
+      reviewListByEstablishmentIdIframe.setAttribute('src', `https://nextchance-nofakes-integration-poc.netlify.app/review-list-by-establishment-id?establishmentId=${establishmentId}`)
+    })
+  </script>
 </body>
 </html>

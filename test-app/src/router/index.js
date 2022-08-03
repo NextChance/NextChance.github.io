@@ -8,11 +8,17 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      beforeEnter: () => {
+        document.title = "NoFakes Core Features";
+      },
     },
     {
       path: "/simple-review-list",
       name: "simpleReviewList",
       component: () => import("../views/SimpleReviewList.vue"),
+      beforeEnter: () => {
+        document.title = "Simple Review List";
+      },
     },
     {
       path: "/about",

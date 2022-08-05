@@ -8,9 +8,13 @@
 
   <style>
     html, body {
-      height: 100%;
       width: 100%;
       margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 2rem;
     }
 
     .iframe-wrapper {
@@ -29,7 +33,7 @@
 
   <h2>Embed site from another domain, showing review list</h2>
   <main class="iframe-wrapper">
-    <iframe id="singleReviewList" src="https://nextchance-nofakes-integration-poc.netlify.app/" frameborder="1"></iframe>
+    <iframe id="singleReviewList" src="https://nextchance-nofakes-integration-poc.netlify.app/simple-review-list" frameborder="1"></iframe>
   </main>
   
   <hr>
@@ -40,6 +44,14 @@
     <input id="establishmentIdInput" type="text" placeholder="id de establecimiento">
     <button id="showReviewsByEstablishmentIdButton">Mostrar reviews</button>
     <iframe id="reviewListByEstablishmentId" src="" frameborder="1"></iframe>
+  </main>
+
+  <hr>
+
+  <h2>Login Area</h2>
+
+  <main class="iframe-wrapper">
+    <iframe id="singleReviewList" src="https://nextchance-nofakes-integration-poc.netlify.app/" frameborder="1"></iframe>
   </main>
 
   <script>

@@ -1,5 +1,13 @@
 <script setup>
+import { onBeforeMount } from "vue";
 import { RouterLink, RouterView } from "vue-router";
+import { useGlobalStore } from "./stores/global-store.js";
+
+const globalStore = useGlobalStore();
+
+onBeforeMount(async () => {
+  globalStore.getLoginDataFromRedirection();
+});
 </script>
 
 <template>
@@ -11,6 +19,14 @@ import { RouterLink, RouterView } from "vue-router";
       width="125"
       height="125"
     />
+
+    <div v-if="!globalStore.user">Usuario no logado</div>
+    <div v-else>
+      <p>{{ globalStore.user.email }}</p>
+      <p>{{ globalStore.user.displayName }}</p>
+      <img :src="globalStore.user.photoURL" alt="" />
+      <button @click="globalStore.firebaseLogout">logout</button>
+    </div>
 
     <div class="wrapper">
       <nav>

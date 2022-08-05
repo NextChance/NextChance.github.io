@@ -1,7 +1,11 @@
+<script setup>
+import GoogleLogin from "../components/GoogleLogin.vue";
+</script>
+
 <template>
   <div class="home">
     <h1>Home Page</h1>
-    <h2>Empty page atm</h2>
+    <google-login></google-login>
   </div>
 </template>
 

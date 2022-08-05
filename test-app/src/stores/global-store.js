@@ -125,7 +125,9 @@ export const useGlobalStore = defineStore("global", {
 
       const auth = getAuth();
       const result = await getRedirectResult(auth);
-      this.user = result.user;
+      if (result) {
+        this.user = result.user;
+      }
     },
 
     async firebaseLogout() {

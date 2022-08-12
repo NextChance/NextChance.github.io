@@ -14,9 +14,12 @@ const API_BASE_URL = "https://dev-api.cazandogangas.com/v1";
 export const useGlobalStore = defineStore("global", {
   state: () => ({
     clientAppToken: null,
+    userToken: null,
+    firebaseToken: null,
     reviews: [],
     firebaseInstance: null,
     user: null,
+    uploadedTicketId: null,
   }),
   getters: {
     getReviews: (state) => state.reviews,
@@ -24,7 +27,7 @@ export const useGlobalStore = defineStore("global", {
 
   actions: {
     async loginApp() {
-      var body = {
+      const body = {
         key: import.meta.env.VITE_APP_KEY,
         secret: import.meta.env.VITE_APP_SECRET,
       };
@@ -39,6 +42,38 @@ export const useGlobalStore = defineStore("global", {
 
       const data = await request.json();
       this.clientAppToken = data.jwt;
+    },
+
+    async loginUser() {
+      const body = {
+        firebaseToken: this.firebaseToken,
+      };
+
+      const request = await fetch(`${API_BASE_URL}/user-credentials`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + this.clientAppToken,
+        },
+      });
+
+      const data = await request.json();
+      this.userToken = data.jwt;
+
+      await this.getUserData();
+    },
+
+    async getUserData() {
+      const request = await fetch(`${API_BASE_URL}/users/me`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + this.userToken,
+        },
+      });
+      const data = await request.json();
+      this.user = data;
     },
 
     async getReviewsByEstablishmentId(
@@ -92,13 +127,11 @@ export const useGlobalStore = defineStore("global", {
       const provider = new GoogleAuthProvider();
       const auth = getAuth();
       signInWithPopup(auth, provider)
-        .then((result) => {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
+        .then(async (result) => {
           const user = result.user;
-          console.log(token);
           console.log(user);
-          this.user = user;
+          this.firebaseToken = result.user.accessToken;
+          await this.loginUser();
         })
         .catch((error) => {
           console.log(error);
@@ -126,7 +159,8 @@ export const useGlobalStore = defineStore("global", {
       const auth = getAuth();
       const result = await getRedirectResult(auth);
       if (result) {
-        this.user = result.user;
+        this.firebaseToken = result.user.accessToken;
+        await this.loginUser();
       }
     },
 
@@ -134,6 +168,43 @@ export const useGlobalStore = defineStore("global", {
       const auth = getAuth();
       await signOut(auth);
       location.reload();
+    },
+
+    async uploadTicket(establishmentId, file) {
+      const body = new FormData();
+
+      body.append("establishmentId", establishmentId);
+      body.append("file", file);
+
+      const request = await fetch(`${API_BASE_URL}/tickets`, {
+        method: "POST",
+        body: body,
+        headers: {
+          authorization: "Bearer " + this.userToken,
+        },
+      });
+
+      const data = await request.json();
+      this.uploadedTicketId = data.id;
+    },
+
+    async createReview(payload) {
+      const body = {
+        ...payload,
+        ticketId: this.uploadedTicketId,
+      };
+
+      const request = await fetch(`${API_BASE_URL}/reviews`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + this.userToken,
+        },
+      });
+
+      const data = await request.json();
+      console.log(data.reviewId);
     },
   },
 });

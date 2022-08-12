@@ -22,9 +22,10 @@ onBeforeMount(async () => {
 
     <div v-if="!globalStore.user">Usuario no logado</div>
     <div v-else>
-      <p>{{ globalStore.user.email }}</p>
-      <p>{{ globalStore.user.displayName }}</p>
-      <img :src="globalStore.user.photoURL" alt="" />
+      <p>{{ globalStore.user.name }}</p>
+      <p>{{ globalStore.user.pointsAmount }} tokens</p>
+      <p>{{ globalStore.user.totalReviews }} reviews</p>
+      <img :src="globalStore.user.image.url" alt="" />
       <button @click="globalStore.firebaseLogout">logout</button>
     </div>
 
@@ -36,7 +37,7 @@ onBeforeMount(async () => {
           to="/review-list-by-establishment-id?establishmentId=8bd461e1-305f-42c0-bd9d-fa925a17db31"
           >Review List by Establishment id</RouterLink
         >
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/create-review">Create Review</RouterLink>
       </nav>
     </div>
   </header>

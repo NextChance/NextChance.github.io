@@ -21,6 +21,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/create-review",
+      name: "createReview",
+      component: () => import("../views/CreateReview.vue"),
+      beforeEnter: () => {
+        document.title = "Create Review";
+      },
+    },
+    {
       path: "/review-list-by-establishment-id",
       name: "reviewListByEstablishmentId",
       component: () => import("../views/ReviewListByEstablishmentId.vue"),

@@ -4,7 +4,7 @@ import GoogleLogin from "../components/GoogleLogin.vue";
 
 <template>
   <div class="home">
-    <h1>Home Page</h1>
+    <h1>Login area</h1>
     <google-login></google-login>
   </div>
 </template>

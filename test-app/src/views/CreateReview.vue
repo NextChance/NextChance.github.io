@@ -12,7 +12,7 @@ onMounted(async () => {
 
 <template>
   <div class="create-review">
-    <h1>Create Review</h1>
+    <h1>Create Review for Docamar(0558c2a4-dc7d-4a57-bc79-b59999d472e0)</h1>
     <p v-if="!globalStore.user">
       <em style="font-weight: bold; color: red"
         >Recuerda que necesitas identificarte como usuario para crear una

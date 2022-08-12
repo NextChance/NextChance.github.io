@@ -68,7 +68,7 @@ const onInputFileChange = async (event) => {
 
 const createReview = async () => {
   const data = {
-    establishmentId: "428b6f1d-5462-45c1-bdf2-ba6a12041c95",
+    establishmentId: "0558c2a4-dc7d-4a57-bc79-b59999d472e0",
     text: reviewData.text,
     rating: reviewData.rating,
   };

@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount } from "vue";
+import { computed, onBeforeMount, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import { useGlobalStore } from "./stores/global-store.js";
 
@@ -8,6 +8,13 @@ const globalStore = useGlobalStore();
 onBeforeMount(async () => {
   globalStore.getLoginDataFromRedirection();
 });
+
+const counter = ref(0);
+
+const isNavigationShown = computed(() => {
+  return counter.value >= 5;
+});
+
 </script>
 
 <template>
@@ -15,9 +22,9 @@ onBeforeMount(async () => {
     <img
       alt="Vue logo"
       class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
+      src="@/assets/nofakes-logo.svg"
+      width="100"
+      @click="counter++"
     />
 
     <div v-if="!globalStore.user">Usuario no logado</div>
@@ -29,9 +36,9 @@ onBeforeMount(async () => {
       <button @click="globalStore.firebaseLogout">logout</button>
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper" v-if="isNavigationShown">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">Login</RouterLink>
         <RouterLink to="/simple-review-list">Simple Review List</RouterLink>
         <RouterLink
           to="/review-list-by-establishment-id?establishmentId=8bd461e1-305f-42c0-bd9d-fa925a17db31"

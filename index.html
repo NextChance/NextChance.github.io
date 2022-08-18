@@ -1,76 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Third Party Web</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Third Party Web</title>
 
-  <style>
-    html, body {
-      width: 100%;
-      margin: 0;
-      box-sizing: border-box;
-    }
+    <style>
+      html,
+      body {
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      padding: 2rem;
-    }
+      body {
+        padding: 2rem;
+      }
 
-    .iframe-wrapper {
-      width: 100%;
-      height: 500px;
-    }
+      .iframe-wrapper {
+        width: 100%;
+        height: 500px;
+      }
 
-    .iframe-wrapper iframe {
-      height: 100%;
-      width: 100%;
-    }
-  </style>
-</head>
-<body style="max-width: 1000px; margin: 0 auto;">
-  <h1>NextChance nofakes integration poc</h1>
+      .iframe-wrapper iframe {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body style="max-width: 1000px; margin: 0 auto">
+    <p>
+      <a href="./nofakes-b2b-onboarding-pocs">NoFakes B2B Onboarding PoCs</a>
+    </p>
 
-  <h2>Embed site from another domain, showing review list</h2>
-  <main class="iframe-wrapper">
-    <iframe src="https://nextchance-nofakes-integration-poc.netlify.app/simple-review-list" frameborder="1"></iframe>
-  </main>
-  
-  <hr>
-  
-  <h2>Showing review list from a single establishmentId via query param</h2>
+    <h1>NextChance nofakes integration poc</h1>
 
-  <main class="iframe-wrapper">
-    <input id="establishmentIdInput" type="text" placeholder="id de establecimiento">
-    <button id="showReviewsByEstablishmentIdButton">Mostrar reviews</button>
-    <iframe id="reviewListByEstablishmentId" src="" frameborder="1"></iframe>
-  </main>
+    <h2>Embed site from another domain, showing review list</h2>
+    <main class="iframe-wrapper">
+      <iframe
+        src="https://nextchance-nofakes-integration-poc.netlify.app/simple-review-list"
+        frameborder="1"
+      ></iframe>
+    </main>
 
-  <hr>
+    <hr />
 
-  <h2>Login Area</h2>
+    <h2>Showing review list from a single establishmentId via query param</h2>
 
-  <main class="iframe-wrapper">
-    <iframe src="https://nextchance-nofakes-integration-poc.netlify.app/" frameborder="1"></iframe>
-  </main>
+    <main class="iframe-wrapper">
+      <input
+        id="establishmentIdInput"
+        type="text"
+        placeholder="id de establecimiento"
+      />
+      <button id="showReviewsByEstablishmentIdButton">Mostrar reviews</button>
+      <iframe id="reviewListByEstablishmentId" src="" frameborder="1"></iframe>
+    </main>
 
-  <hr>
-  
-  <h2>Create review</h2>
+    <hr />
 
-  <main class="iframe-wrapper">
-    <iframe id="createReview" src="https://nextchance-nofakes-integration-poc.netlify.app/create-review" frameborder="1"></iframe>
-  </main>
+    <h2>Login Area</h2>
 
-  <script>
-    const showReviewsByEstablishmentIdButton = document.querySelector('#showReviewsByEstablishmentIdButton');
-    const establishmentIdInput = document.querySelector('#establishmentIdInput');
-    const reviewListByEstablishmentIdIframe = document.querySelector('#reviewListByEstablishmentId');
+    <main class="iframe-wrapper">
+      <iframe
+        src="https://nextchance-nofakes-integration-poc.netlify.app/"
+        frameborder="1"
+      ></iframe>
+    </main>
 
-    showReviewsByEstablishmentIdButton.addEventListener('click', () => {
-      const establishmentId = establishmentIdInput.value;
-      reviewListByEstablishmentIdIframe.setAttribute('src', `https://nextchance-nofakes-integration-poc.netlify.app/review-list-by-establishment-id?establishmentId=${establishmentId}`)
-    })
-  </script>
-</body>
+    <hr />
+
+    <h2>Create review</h2>
+
+    <main class="iframe-wrapper">
+      <iframe
+        id="createReview"
+        src="https://nextchance-nofakes-integration-poc.netlify.app/create-review"
+        frameborder="1"
+      ></iframe>
+    </main>
+
+    <script>
+      const showReviewsByEstablishmentIdButton = document.querySelector(
+        "#showReviewsByEstablishmentIdButton"
+      );
+      const establishmentIdInput = document.querySelector(
+        "#establishmentIdInput"
+      );
+      const reviewListByEstablishmentIdIframe = document.querySelector(
+        "#reviewListByEstablishmentId"
+      );
+
+      showReviewsByEstablishmentIdButton.addEventListener("click", () => {
+        const establishmentId = establishmentIdInput.value;
+        reviewListByEstablishmentIdIframe.setAttribute(
+          "src",
+          `https://nextchance-nofakes-integration-poc.netlify.app/review-list-by-establishment-id?establishmentId=${establishmentId}`
+        );
+      });
+    </script>
+  </body>
 </html>

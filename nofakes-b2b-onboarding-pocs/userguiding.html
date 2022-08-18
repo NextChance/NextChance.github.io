@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stonly PoC</title>
+    <title>UserGuiding PoC</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -19,42 +19,53 @@
         max-width: 600px;
       }
     </style>
-    <!-- Copy into the head of all HTML pages you wish to display the widget -->
+    <!-- UserGuiding script start -->
+    <script>
+      (function (g, u, i, d, e, s) {
+        g[e] = g[e] || [];
+        var f = u.getElementsByTagName(i)[0];
+        var k = u.createElement(i);
+        k.async = true;
+        k.src =
+          "https://static.userguiding.com/media/user-guiding-" +
+          s +
+          "-embedded.js";
+        f.parentNode.insertBefore(k, f);
+        if (g[d]) return;
+        var ug = (g[d] = { q: [] });
+        ug.c = function (n) {
+          return function () {
+            ug.q.push([n, arguments]);
+          };
+        };
+        var m = [
+          "previewGuide",
+          "finishPreview",
+          "track",
+          "identify",
+          "triggerNps",
+          "hideChecklist",
+          "launchChecklist",
+        ];
+        for (var j = 0; j < m.length; j += 1) {
+          ug[m[j]] = ug.c(m[j]);
+        }
+      })(
+        window,
+        document,
+        "script",
+        "userGuiding",
+        "userGuidingLayer",
+        "893799700ID"
+      );
+    </script>
 
-    <!-- stonly-widget - copy into the head -->
-    <script>
-      window.STONLY_WID = "1e04a9d1-17dd-11ed-b42d-06643a645a92";
-    </script>
-    <script>
-      !(function (s, t, o, n, l, y, w, g) {
-        s.StonlyWidget ||
-          (((w = s.StonlyWidget =
-            function () {
-              w._api ? w._api.apply(w, arguments) : w.queue.push(arguments);
-            }).scriptPath = n),
-          (w.queue = []),
-          ((y = t.createElement(o)).async = !0),
-          (g = new XMLHttpRequest()).open(
-            "GET",
-            n + "version?v=" + Date.now(),
-            !0
-          ),
-          (g.onreadystatechange = function () {
-            4 === g.readyState &&
-              ((y.src =
-                n +
-                "stonly-widget.js?v=" +
-                (200 === g.status ? g.responseText : Date.now())),
-              (l = t.getElementsByTagName(o)[0]).parentNode.insertBefore(y, l));
-          }),
-          g.send());
-      })(window, document, "script", "https://stonly.com/js/widget/v2/");
-    </script>
+    <!-- UserGuiding script end -->
   </head>
   <body>
     <h1><a href="./index.html">BACK</a></h1>
 
-    <h1 id="headings">Stonly PoC</h1>
+    <h1 id="headings">UserGuiding PoC</h1>
 
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>

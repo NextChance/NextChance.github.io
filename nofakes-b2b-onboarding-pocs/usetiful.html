@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stonly PoC</title>
+    <title>Usetiful PoC</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -19,42 +19,25 @@
         max-width: 600px;
       }
     </style>
-    <!-- Copy into the head of all HTML pages you wish to display the widget -->
+    <!-- Usetiful script start -->
+    <script>
+      (function (w, d, s) {
+        var a = d.getElementsByTagName("head")[0];
+        var r = d.createElement("script");
+        r.async = 1;
+        r.src = s;
+        r.setAttribute("id", "usetifulScript");
+        r.dataset.token = "649949054a1f4dd62dec94f8badc6dd1";
+        a.appendChild(r);
+      })(window, document, "https://www.usetiful.com/dist/usetiful.js");
+    </script>
 
-    <!-- stonly-widget - copy into the head -->
-    <script>
-      window.STONLY_WID = "1e04a9d1-17dd-11ed-b42d-06643a645a92";
-    </script>
-    <script>
-      !(function (s, t, o, n, l, y, w, g) {
-        s.StonlyWidget ||
-          (((w = s.StonlyWidget =
-            function () {
-              w._api ? w._api.apply(w, arguments) : w.queue.push(arguments);
-            }).scriptPath = n),
-          (w.queue = []),
-          ((y = t.createElement(o)).async = !0),
-          (g = new XMLHttpRequest()).open(
-            "GET",
-            n + "version?v=" + Date.now(),
-            !0
-          ),
-          (g.onreadystatechange = function () {
-            4 === g.readyState &&
-              ((y.src =
-                n +
-                "stonly-widget.js?v=" +
-                (200 === g.status ? g.responseText : Date.now())),
-              (l = t.getElementsByTagName(o)[0]).parentNode.insertBefore(y, l));
-          }),
-          g.send());
-      })(window, document, "script", "https://stonly.com/js/widget/v2/");
-    </script>
+    <!-- Usetiful script end -->
   </head>
   <body>
     <h1><a href="./index.html">BACK</a></h1>
 
-    <h1 id="headings">Stonly PoC</h1>
+    <h1 id="headings">Usetiful PoC</h1>
 
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>

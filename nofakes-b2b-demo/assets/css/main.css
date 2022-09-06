@@ -2475,11 +2475,20 @@ input, select, textarea {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
-		display: flex;
+		/* display: flex; */
+		display: none;
 		cursor: default;
 		list-style: none;
 		margin-left: -1em;
 		padding-left: 0;
+	}
+
+	@media screen and (min-width: 980px) {
+
+		ul.actions {
+			display: flex;
+		}
+
 	}
 
 		ul.actions li {
@@ -2926,7 +2935,7 @@ input, select, textarea {
 /* Wrapper */
 
 	.wrapper {
-		padding: 4.5em 0 2.5em 0 ;
+		padding: 4.5em 4em 2.5em 4em ;
 		background-color: #ffffff;
 		border-bottom: solid 2px #eeeeee;
 	}

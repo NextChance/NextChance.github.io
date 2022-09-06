@@ -30,6 +30,9 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 }
 
 ol, ul {
@@ -71,6 +74,10 @@ input, select, textarea {
 	appearance: none;
 }
 
+#one {
+	flex-grow: 1;
+}
+
 /* Basic */
 
 	@-ms-viewport {
@@ -91,6 +98,7 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		height: 100%;
 	}
 
 	*, *:before, *:after {

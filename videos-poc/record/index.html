@@ -12,6 +12,7 @@
   
   <div class="video-wrapper" style="display: none;">
     <h2>Vídeo elegido </h2>
+    <div class="video-info"></div>
     <video controls>
       <source src="" >
       Your browser does not support HTML5 video.
@@ -22,14 +23,26 @@
     const inputFileElement = document.querySelector('input');
     const sourceElement = document.querySelector('source');
     const videoElement = document.querySelector('video');
-    const VideoWrapperElement = document.querySelector('.video-wrapper');
+    const videoWrapperElement = document.querySelector('.video-wrapper');
+    const videoInfoElement = document.querySelector('.video-info');
+    let file = null;
 
     inputFileElement.addEventListener('change', (event) => {
-      const file = event.target.files[0];
+      file = event.target.files[0];
       const video = URL.createObjectURL(file);
       sourceElement.src = video;
       videoElement.load();
-      VideoWrapperElement.style.display = 'block';
+      videoWrapperElement.style.display = 'block';
+    })
+
+    videoElement.addEventListener('loadedmetadata', (event) => {
+      const fileKB = Math.round(file.size/1024);
+      const fileMB = file.size / (1024*1024);
+      videoInfoElement.innerHTML = `
+        <p>duration: ${parseInt(videoElement.duration)} seconds</p>
+        <p>resolution: ${videoElement.videoWidth}x${videoElement.videoHeight}</p>
+        <p>weight: ${fileKB} KB | ${fileMB.toFixed(3)} MB</p>
+      `;
     })
   </script>
 </body>

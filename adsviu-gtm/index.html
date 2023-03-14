@@ -51,11 +51,19 @@
 
     <!-- One -->
     <section id="one" class="wrapper style2 special">
-      <div>
-        <img
-                class="buyviu_ads"
-                src="https://theobjective.com/wp-content/uploads/2023/03/pantalon-blanco-morant-683x1024.jpg"
-        >
+      <div class="adsviu__wrapper">
+        <div class="adsviu__item">
+          <img
+                  class="buyviu_ads"
+                  src="https://theobjective.com/wp-content/uploads/2023/03/pantalon-blanco-morant-683x1024.jpg"
+          >
+        </div>
+        <div class="adsviu__item">
+          <img
+                  class="buyviu_ads"
+                  src="https://theobjective.com/wp-content/uploads/2023/03/nadador-bouret-ladies-zalando-1024x576.jpg"
+          >
+        </div>
       </div>
     </section>
 
@@ -72,6 +80,21 @@
         width: 130px;
         height: 200px;
       }
+
+      .adsviu__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .adsviu__item {
+        width: 50%;
+        padding: 10px;
+      }
+
+      .adsviu__item img {
+        max-width: 100%;
+      }
+
       @media (min-width: 768px) {
         .nofakes-widget[nofakes-seal-widget] iframe {
           width: 180px;
